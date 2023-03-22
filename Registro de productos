@@ -1,0 +1,144 @@
+
+from tkinter import*
+from PIL import ImageTk,Image
+
+
+root=Tk()
+root.title("Ejercicio A")
+root.geometry("450x800")
+ventanaprincipal=Frame(root,width=1000,height=1000,bg="gray")
+ventanaprincipal.grid()
+
+imgato=Image.open("gato.png")
+imgat=imgato.resize((150,135))
+img=ImageTk.PhotoImage(imgat)
+
+fotocat=Label(ventanaprincipal,image=img).place(x=167,y=51)
+
+
+
+#funcionamiento del button
+def Registro():
+    print(" Tus productos son:",valorproducto.get(),"\n",
+        "El SKU de tu producto es:",valorSKU.get(),)
+    print(" El depto es:")
+    if(CheckUno.get()==1):
+        print(" A")
+    pass
+    if(CheckDos.get()==1):
+        print(" B")
+    pass
+    if(CheckTres.get()==1):
+        print(" C")
+    pass
+    print("Tu provedor es:",valor.get())
+    if(CheckCuatro.get()==1):
+        print("El idioma que elegiste es: EN")
+    if(CheckCinco.get()==1):
+        print("El idioma que elegiste es: SP")
+
+
+
+
+Titulo=Label(ventanaprincipal,
+             text="Registro\nProductos",
+             font=("Times",14,"bold"),
+             background="gray",#color de fondo
+             foreground="black", #color de letras
+             width=8,#espacios en X
+             height=2, #espacios en Y
+             
+             #anchor=N, #mover a los lados
+             justify=CENTER,
+             
+            ).place(x=200,y=1)
+
+
+
+Producto=Label(ventanaprincipal,
+             text="Productos:",
+             font=("Times",14,"bold"),
+             background="gray",#color de fondo
+             foreground="black", #color de letras
+             width=8,#espacios en X
+             height=2, #espacios en Y
+             
+             #anchor=N, #mover a los lados
+             justify=CENTER,
+             
+            ).place(x=49,y=190)
+
+#entrada del producto
+valorproducto=StringVar()
+textProducto=Entry(ventanaprincipal,font=("Times",12),textvariable=valorproducto).place(x=160,y=205)
+
+
+sku=Label(ventanaprincipal,
+             text="SKU:",
+             font=("Times",14,"bold"),
+             background="gray",#color de fondo
+             foreground="black", #color de letras
+             width=8,#espacios en X
+             height=2, #espacios en Y
+             
+             #anchor=N, #mover a los lados
+             justify=CENTER,
+             
+            ).place(x=50,y=250)
+
+#entrada de SKU
+valorSKU=StringVar()
+textSku=Entry(ventanaprincipal,font=("Times",12),textvariable=valorSKU).place(x=160,y=260)
+
+
+Depto=Label(ventanaprincipal,
+             text="Depto:",
+             font=("Times",14,"bold"),
+             background="gray",#color de fondo
+             foreground="black", #color de letras
+             width=8,#espacios en X
+             height=2, #espacios en Y
+             
+             #anchor=N, #mover a los lados
+             justify=CENTER,
+             
+            ).place(x=185,y=300)
+
+
+
+
+#Estado de los checkbox
+CheckUno=IntVar()
+CheckDos=IntVar()
+CheckTres=IntVar()
+CheckCuatro=IntVar()
+CheckCinco=IntVar()
+
+
+#creacion del check
+check1=Checkbutton(ventanaprincipal,font=("Times",14,"bold"),text="A",variable=CheckUno,background="gray").place(x=160,y=360)
+check2=Checkbutton(ventanaprincipal,font=("Times",14,"bold"),text="B",variable=CheckDos,background="gray").place(x=210,y=360)
+check3=Checkbutton(ventanaprincipal,font=("Times",14,"bold"),text="C",variable=CheckTres,background="gray").place(x=260,y=360)
+check4=Checkbutton(ventanaprincipal,font=("Times",14,"bold"),text="EN",variable=CheckCuatro,background="gray").place(x=180,y=520)
+check5=Checkbutton(ventanaprincipal,font=("Times",14,"bold"),text="SP",variable=CheckCinco,background="gray").place(x=235,y=520)
+
+
+Provedor=Label(ventanaprincipal,
+             text="Provedor:",
+             font=("Times",14,"bold"),
+             background="gray",#color de fondo
+             foreground="black", #color de letras
+             width=8,#espacios en X
+             height=2, #espacios en Y
+             
+             #anchor=N, #mover a los lados
+             justify=CENTER,
+             
+            ).place(x=49,y=400)
+
+
+#CREACION DEL DROPBOX
+valor=StringVar()
+valor.set("ELIGE UN PROVEDOR")
+drop=OptionMenu(root,valor,"ELIGE UN PROVEDOR","Mercado Libre","Amazon").place(x=160,y=408)
+
